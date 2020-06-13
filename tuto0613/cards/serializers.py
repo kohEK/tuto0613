@@ -9,6 +9,12 @@ class CardSerializer(serializers.ModelSerializer):
         fields = ['owner', 'card_color', 'register_date']
 
 
+class UserCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'email']
+
+
 class UserSerializer(serializers.ModelSerializer):
     card = CardSerializer(source='card_set', many=True, read_only=True)
 
