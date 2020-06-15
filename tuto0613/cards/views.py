@@ -1,5 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.authtoken.models import Token
+from rest_framework.pagination import CursorPagination
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -9,6 +10,11 @@ from cards.serializers import UserSerializer, CardSerializer, UserCreateSerializ
 from cards.models import Card
 from cards.permissions import IsOwnerOrReadOnly
 
+
+
+class MyPagination(CursorPagination):
+    page_size = 3
+    ordering = '-id'
 
 # Create your views here.
 
